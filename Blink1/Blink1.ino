@@ -12,10 +12,10 @@ enum class GameState
     Win,
 };
 
-
 MCUFRIEND_kbv lcd;
 const int scale = 3;
 GameState state = GameState::Ingame;
+Game game(5, 3);
 
 void DrawSprite(Sprite* sprite, int x, int y)
 {
@@ -47,9 +47,6 @@ void DrawBlack(int x, int y)
         }
     }
 }
-
-Game game(5, 3);
-
 void DrawInvaders()
 {
     for (int i = 0; i < game.invaderAmount; i++)
