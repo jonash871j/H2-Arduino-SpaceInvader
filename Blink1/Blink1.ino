@@ -17,21 +17,26 @@ const int scale = 3;
 GameState state = GameState::Ingame;
 Game game(5, 3);
 
-void DrawSprite(Sprite* sprite, int x, int y)
+void DrawSprite(Sprite* sprite, short x, short y)
 {
-    for (int _y = 0; _y < sprite->height; _y++)
+    char* pixels = (char*)sprite->pixels;
+
+    for (short _y = 0; _y < sprite->height; _y++)
     {
-        for (int _x = 0; _x < sprite->width; _x++)
+        short yCal = ((_y + y * sprite->height) * scale);
+        short yWidth = _y * sprite->width;
+
+        for (short _x = 0; _x < sprite->width; _x++)
         {
-            char c = sprite->pixels[_y * sprite->width + _x];
+            char c = pixels[yWidth + _x];
 
             if (c == '#')
             {
-                lcd.fillRect(_x * scale + (x * sprite->width * scale), _y * scale + (y * sprite->height * scale), scale, scale, sprite->color);
+                lcd.fillRect(((_x + x * sprite->width) * scale), yCal, scale, scale, sprite->color);
             }
             else
             {
-                lcd.fillRect(_x * scale + (x * sprite->width * scale), _y * scale + (y * sprite->height * scale), scale, scale, 0x0000);
+                lcd.fillRect(((_x + x * sprite->width) * scale), yCal, scale, scale, 0x0000);
             }
         }
     }

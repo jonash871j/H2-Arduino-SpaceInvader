@@ -122,7 +122,7 @@ namespace SpaceInvader
 		y = -1;
 		isShoted = false;
 	}
-	Sprite::Sprite(short color, short width, short height, char* pixels)
+	Sprite::Sprite(short color, short width, short height, void* pixels)
 	{
 		this->color = color;
 		this->width = width;

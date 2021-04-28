@@ -7,9 +7,9 @@ namespace SpaceInvader
 		short color;
 		short width;
 		short height;
-		char* pixels;
+		void* pixels;
 
-		Sprite(short color, short width, short height, char* pixels);
+		Sprite(short color, short width, short height, void* pixels);
 	};
 
 	struct MapObject
@@ -70,5 +70,4 @@ namespace SpaceInvader
 		bool CheckLose();
 		Invader* GetInvader(short x, short y);
 	};
-
 }
